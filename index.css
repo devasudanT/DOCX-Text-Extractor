@@ -1,0 +1,255 @@
+:root {
+  --background-color: #f4f7f9;
+  --container-bg: #ffffff;
+  --primary-color: #3d82f0;
+  --primary-hover-color: #346dcc;
+  --text-color: #333;
+  --text-light: #666;
+  --border-color: #e0e0e0;
+  --dropzone-border: #cccccc;
+  --dropzone-bg-hover: #f0f5ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+#root {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.app-container {
+  background-color: var(--container-bg);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  padding: 2.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.app-header {
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.app-header p {
+  color: var(--text-light);
+  margin-top: 0.5rem;
+}
+
+.drop-zone {
+  border: 2px dashed var(--dropzone-border);
+  border-radius: 10px;
+  padding: 3rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.drop-zone.dragging {
+  border-color: var(--primary-color);
+  background-color: var(--dropzone-bg-hover);
+  transform: scale(1.02);
+}
+
+.drop-zone-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  color: var(--primary-color);
+}
+
+.drop-zone-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.drop-zone-text span {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.drop-zone-subtext {
+  color: var(--text-light);
+  margin-top: 0.5rem;
+}
+
+#file-input {
+  display: none;
+}
+
+.controls {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skip-page-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+#skip-page-checkbox {
+  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-color);
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  color: #d9534f;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+.result-container {
+  text-align: left;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.file-name {
+  font-weight: 600;
+  color: var(--text-color);
+  word-break: break-all;
+}
+
+.result-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover-color);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #e0e0e0;
+  color: var(--text-color);
+}
+
+.btn-secondary:hover {
+  background-color: #d1d1d1;
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.extracted-content {
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 600px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.extracted-content h1,
+.extracted-content h2,
+.extracted-content h3,
+.extracted-content h4,
+.extracted-content h5,
+.extracted-content h6 {
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  font-weight: 600;
+}
+
+.extracted-content p {
+  margin-bottom: 1em;
+}
+
+.extracted-content ul,
+.extracted-content ol {
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+
+.extracted-content strong,
+.extracted-content b {
+  font-weight: 600;
+}
+
+.extracted-content em,
+.extracted-content i {
+  font-style: italic;
+}
+
+.extracted-content li {
+  margin-bottom: 0.5em;
+}
+
+.extracted-content hr.page-break {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 2em 0;
+}

@@ -1,0 +1,5 @@
+{
+  "name": "DOCX Text Extractor",
+  "description": "A tool to extract text from DOCX files with options to skip the first page and easily copy content.",
+  "requestFramePermissions": []
+}
