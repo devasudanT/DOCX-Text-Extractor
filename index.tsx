@@ -12,6 +12,7 @@ const App: React.FC = () => {
     const [isDragging, setIsDragging] = useState<boolean>(false);
     const [fileName, setFileName] = useState<string | null>(null);
     const [copyButtonText, setCopyButtonText] = useState<string>('Copy Text');
+    const [showPageBreaks, setShowPageBreaks] = useState<boolean>(true);
     
     const fileInputRef = useRef<HTMLInputElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         setError(null);
         setFileName(null);
         setCopyButtonText('Copy Text');
+        setShowPageBreaks(true);
     };
 
     const handleFile = useCallback(async (file: File) => {
@@ -158,6 +160,16 @@ const App: React.FC = () => {
             <div className="result-header">
                 <p className="file-name">{fileName}</p>
                 <div className="result-actions">
+                    <label className="toggle-switch-container" title="Show or hide page breaks">
+                        <span className="toggle-label">Page Breaks</span>
+                        <input
+                            id="page-break-toggle"
+                            type="checkbox"
+                            checked={showPageBreaks}
+                            onChange={(e) => setShowPageBreaks(e.target.checked)}
+                        />
+                        <span className="toggle-slider"></span>
+                    </label>
                     <button className="btn btn-secondary" onClick={resetState} aria-label="Process a new file">
                         <svg className="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0011.664 0l3.181-3.183m-11.664 0l3.181-3.183a8.25 8.25 0 00-11.664 0l3.181 3.183" />
@@ -173,7 +185,7 @@ const App: React.FC = () => {
                     </button>
                 </div>
             </div>
-            <div className="extracted-content" ref={contentRef} dangerouslySetInnerHTML={{ __html: extractedHtml }} />
+            <div className={`extracted-content ${!showPageBreaks ? 'hide-page-breaks' : ''}`} ref={contentRef} dangerouslySetInnerHTML={{ __html: extractedHtml }} />
         </div>
     );
 
